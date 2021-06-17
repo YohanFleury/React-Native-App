@@ -5,11 +5,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import defaultStyles from '../config/styles'
 
 
-const AppTextInput = ({ icon, ...otherProps }) => {
+const AppTextInput = ({ icon, style, size = 20, ...otherProps }) => {
     return (
-        <View style={styles.container}>
-            {icon && <MaterialCommunityIcons name={icon} size={20} color={defaultStyles.colors.medium} style={styles.icon} />}
-            <TextInput placeholderTextColor={defaultStyles.colors.medium} style={defaultStyles.text} {...otherProps} />
+        <View style={[styles.container, style]}>
+            {icon && <MaterialCommunityIcons name={icon} size={size} color={defaultStyles.colors.medium} style={styles.icon} />}
+            <TextInput placeholderTextColor={defaultStyles.colors.medium} style={defaultStyles.text, {width: "100%"}} {...otherProps} />
         </View>
     )
 }

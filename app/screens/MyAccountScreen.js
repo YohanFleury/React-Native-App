@@ -6,32 +6,37 @@ import Screen from '../components/Screen'
 import colors from '../config/colors'
 import Icon from '../components/Icon'
 import ListItemSeparator from '../components/ListItemSeparator'
+import useAuth from '../auth/useAuth'
 
 
 const menuItems = [
     {
-        title: "My listings",
+        title: "My Listings",
         icon: {
             name: "format-list-bulleted",
             backgroundColor: colors.primary
         }
     },
     {
-        title: "My messages",
+        title: "My Messages",
         icon: {
             name: "email",
             backgroundColor: colors.secondary
-        }
+        },
+        targetScreen: "Messages"
     }
 ]
 
-const MyAccountScreen = () => {
+const MyAccountScreen = ({ navigation }) => {
+
+    const { user, logOut } = useAuth()
+
     return (
         <Screen style={styles.screen}>
             <View style={styles.container}>
                 <ListItem
-                    title="Yohan Fleury"
-                    subTitle="Le codeur bogosse"
+                    title={user.name}
+                    subTitle={user.email}
                     image={require('../assets/jacket.jpg')}
                 />
             </View>
@@ -49,13 +54,16 @@ const MyAccountScreen = () => {
                                 />
                                 
                             }
+                            onPress={() => navigation.navigate(item.targetScreen)}
                         />
                     )}
+                    
                 />
             </View>
             <ListItem
                 title="Log Out"
-                IconComponent={ <Icon name="logout" backgroundColor="#ffe66d"/> } 
+                IconComponent={ <Icon name="logout" backgroundColor="#ffe66d"/> }
+                onPress={() => logOut()} 
             />    
         </Screen>
     )

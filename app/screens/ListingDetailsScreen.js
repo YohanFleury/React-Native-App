@@ -1,28 +1,37 @@
 import React from 'react'
-import { Image, View, StyleSheet } from 'react-native'
+import { Image, View, StyleSheet, KeyboardAvoidingView } from 'react-native'
 
 import AppText from '../components/AppText/AppText'
 import colors from '../config/colors'
 import ListItem from '../components/ListItem'
+import ContactSellerForm from '../components/contactSellerForm'
 
 
-const ListingDetailsScreen = () => {
+const ListingDetailsScreen = ({ route }) => {
+    const listing = route.params
+
     return (
-        <View>
-            <Image style={styles.image} source={require('../assets/jacket.jpg')} />
+       
+        <KeyboardAvoidingView
+            behavior="position"
+            keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
+        >
+            <Image style={styles.image} source={listing.images} />
             <View style={styles.detailsContainer}>
-                <AppText style={styles.title}>Blue jacket for sale</AppText>
-                <AppText style={styles.subTitle}>$100</AppText>
+                <AppText style={styles.title}>{listing.title}</AppText>
+                <AppText style={styles.subTitle}>${listing.price}</AppText>
+                <AppText style={styles.description}>{listing.description}</AppText>
                 <View style={styles.userContainer}>
                     <ListItem
                         image={require('../assets/jacket.jpg')}
-                        title="Yohan Lebogosse"
+                        title="Yohan Fleury"
                         subTitle="5 Listings"
                     />
                 </View>
+                <ContactSellerForm listing={listing} />
             </View>
-            
-        </View>
+        </KeyboardAvoidingView>
+        
     )
 }
 
@@ -43,6 +52,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: "500",
+    },
+    description: {
+        fontSize: 20,
+        color: colors.dark
     },
     userContainer: {
         marginVertical: 40,

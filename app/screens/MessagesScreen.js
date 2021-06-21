@@ -11,13 +11,13 @@ const initialMessages = [
     {
         id: 1,
         title: 'Titre 1',
-        description: 'Blablablz',
+        description: 'Message 1',
         image: require('../assets/jacket.jpg')
     },
     {
         id: 2,
         title: 'Titre 2',
-        description: 'Blablabla 2',
+        description: 'Message 2',
         image: require('../assets/jacket.jpg')
     }
 
@@ -42,13 +42,13 @@ const MessagesScreen = () => {
                         title={item.title}
                         subTitle={item.description}
                         image={item.image}
-                        onPress={() => console.log('Coucouyuiguy', item)}
+                        onPress={() => console.log(item)}
                         renderRightActions={() => <ListItemDeleteAction onPress={() => handleDelete(item)} />}
                     />
                 )}
                 ItemSeparatorComponent={ListItemSeparator}
                 refreshing={refreshing}
-                onRefresh={() => console.log('KB9 !!!!!')}
+                onRefresh={() => console.log('Messages chargés')}
 
             />
         </Screen>

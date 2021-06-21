@@ -5,5 +5,6 @@ export default Object.freeze({
     LISTINGS: "Listings",
     LISTING_EDIT: "ListingEdit",
     LOGIN: 'Login',
-    REGISTER: 'Register'
+    REGISTER: 'Register', 
+    MY_LISTINGS: "MyListings",
 })

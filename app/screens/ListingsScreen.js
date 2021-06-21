@@ -20,7 +20,6 @@ const ListingsScreen = ({ navigation }) => {
         request()
     }, [])
 
-    
     return (
         <>
             <ActivityIndicator visible={loading} />
@@ -34,14 +33,17 @@ const ListingsScreen = ({ navigation }) => {
                 <FlatList 
                     data={data}
                     keyExtractor={listing => listing.id.toString()}
-                    renderItem={({ item }) =>
+                    renderItem={({ item }) => (
                         <Card
                             title={item.title}
                             subTitle={"$" + item.price}
                             imageUrl={item.images[0].url}
-                            onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)} 
+                            onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+                            thumbnailUrl={item.images[0].thumbnailUrl} 
                         />
-                    }
+                    )}
+                    refreshing={loading}
+                    onRefresh={request}
                 />
             </Screen>
         </>

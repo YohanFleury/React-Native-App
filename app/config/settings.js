@@ -2,13 +2,13 @@ import Constants from "expo-constants";
 
 const settings = {
   dev: {
-    apiUrl: "http://192.168.0.14:9000/api",
+    apiUrl: "http://192.168.0.17:9000/api",
   },
   staging: {
-    apiUrl: "http://192.168.0.14:9000/api",
+    apiUrl: "https://thawing-wave-99653.herokuapp.com/api",
   },
   prod: {
-    apiUrl: "http://192.168.0.14:9000/api",
+    apiUrl: "http://192.168.0.17:9000/api",
   },
 };
 
